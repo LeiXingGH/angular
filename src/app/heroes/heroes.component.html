@@ -1,10 +1,17 @@
-<h2>{{ hero.name | uppercase }} Details</h2><!--管道(|)是格式化字符串、金额、日期和其它显示数据的好办法。 Angular 发布了一些内置管道，而且你还可以创建自己的管道。-->
-<div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
-<div><span>skill: </span>{{hero.skill}}</div>
-
-<div>
-  <label>name:
-    <input [(ngModel)]="hero.name" placeholder="name"><!--虽然 ngModel 是一个有效的 Angular 指令，不过它在默认情况下是不可用的。它属于一个可选模块 FormsModule，你必须自行添加此模块才能使用该指令。-->
-  </label>
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero"><!--click 外面的圆括号会让 Angular 监听这个 <li> 元素的 click 事件。 当用户点击 <li> 时，Angular 就会执行表达式 onSelect(hero)。onSelect() 是 HeroesComponent 上的一个方法，你很快就要写它。 Angular 会把所点击的 <li> 上的 hero 对象传给它，这个 hero 也就是以前在 *ngFor 表达式中定义的那个。-->
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <span>hero:{{hero.toString()}}</span>
+  </li>
+</ul>
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id:</span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
 </div>
+
