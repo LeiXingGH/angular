@@ -1,0 +1,6 @@
+/*控制的是app.component.html文件的css样式，但是要注意这个局部的并且需要在app.component.ts中引入才会起作用，也就是不在app.component.html中使用src中引入，而是在app.component.ts中使用@Component({styleUrls:[]引入，是个数组，也就是可以引入多个css文件,使用相对路径./就是指本ts所在的目录的等级})*/
+.lxx li{/*这边的类就是templateUrl中指定的HTML中类名，只要改模板对应的css文件都是可以直接使用这个类名来调整样式*/
+  list-style: circle;
+  color: #b1ff1d;
+}
+
