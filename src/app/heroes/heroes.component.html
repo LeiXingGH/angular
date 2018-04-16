@@ -2,16 +2,7 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero"><!--click 外面的圆括号会让 Angular 监听这个 <li> 元素的 click 事件。 当用户点击 <li> 时，Angular 就会执行表达式 onSelect(hero)。onSelect() 是 HeroesComponent 上的一个方法，你很快就要写它。 Angular 会把所点击的 <li> 上的 hero 对象传给它，这个 hero 也就是以前在 *ngFor 表达式中定义的那个。-->
     <span class="badge">{{hero.id}}</span> {{hero.name}}
-    <span>hero:{{hero.name}}</span><!--判断是数字和对象直接对象点一下属性看能不能打开就知道是对象还是数组了-->
+   <!--判断是数字和对象直接对象点一下属性看能不能打开就知道是对象还是数组了-->
   </li>
 </ul>
-<div *ngIf="selectedHero">
-  <h2>{{selectedHero.name | uppercase}} Details</h2>
-  <div><span>id:</span>{{selectedHero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedHero.name" placeholder="name">
-    </label>
-  </div>
-</div>
-
+<app-hero-detail [hero]="selectedHero"></app-hero-detail><!--[hero]="selectedHero" 是 Angular 的属性绑定语法。这是一种单向数据绑定。从 HeroesComponent 的 selectedHero 属性绑定到目标元素的 hero 属性，并映射到了 HeroDetailComponent 的 hero 属性。-->
